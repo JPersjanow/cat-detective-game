@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://my3vfo17yd8y"]
+
+[ext_resource type="Script" uid="uid://cwed1xvtako5n" path="res://scenes/entities/npc/textbox.gd" id="1_kxoy4"]
+[ext_resource type="FontFile" uid="uid://80stfyeusfp6" path="res://assets/ui/BoldPixels.ttf" id="1_mf812"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2odn"]
+bg_color = Color(0.95686275, 0.85490197, 0.7254902, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.27058825, 0.16470589, 0.105882354, 1)
+
+[node name="Textbox" type="CanvasLayer"]
+script = ExtResource("1_kxoy4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m2odn")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_right = 1888.0
+offset_bottom = 132.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.12156863, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("1_mf812")
+theme_override_font_sizes/font_size = 30
+text = "*"
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15294118, 0.12156863, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_mf812")
+theme_override_fonts/bold_font = ExtResource("1_mf812")
+theme_override_fonts/bold_italics_font = ExtResource("1_mf812")
+theme_override_fonts/italics_font = ExtResource("1_mf812")
+theme_override_fonts/mono_font = ExtResource("1_mf812")
+theme_override_font_sizes/normal_font_size = 30
+text = "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+autowrap_mode = 2
+
+[node name="End" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.15294118, 0.12156863, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("1_mf812")
+theme_override_font_sizes/font_size = 30
+text = "v"

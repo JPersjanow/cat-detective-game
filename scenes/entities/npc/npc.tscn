@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://4e2y6ngekdts"]
+
+[ext_resource type="Script" uid="uid://dutkduwgm2bij" path="res://scenes/entities/npc/npc.gd" id="1_4kvco"]
+[ext_resource type="Texture2D" uid="uid://b43ic30a8xxxf" path="res://assets/npc/cat-ragdoll-idle.png" id="1_iify0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kvco"]
+atlas = ExtResource("1_iify0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n61dp"]
+atlas = ExtResource("1_iify0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cdmjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kvco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n61dp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kvb8"]
+size = Vector2(20, 10)
+
+[node name="NPC" type="CharacterBody2D" groups=["NPCs"]]
+script = ExtResource("1_4kvco")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cdmjo")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_3kvb8")

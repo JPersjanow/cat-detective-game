@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcla5mnercna8"]
+
+[ext_resource type="Script" uid="uid://cmn2qm2v06vxv" path="res://scenes/entities/questcollectible/questcollectible.gd" id="1_6cq1b"]
+[ext_resource type="Texture2D" uid="uid://c7tlikybtioo2" path="res://assets/entities/treat.png" id="4_6lo4r"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_od5db"]
+parameter_name = "TreatType"
+default_value_enabled = true
+
+[sub_resource type="VisualShader" id="VisualShader_lu02m"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 TreatType : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+
+void vertex() {
+// ColorParameter:3
+	vec4 n_out3p0 = TreatType;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out3p0.xyz);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/vertex/3/node = SubResource("VisualShaderNodeColorParameter_od5db")
+nodes/vertex/3/position = Vector2(40, 260)
+nodes/vertex/connections = PackedInt32Array(3, 0, 0, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdiy0"]
+shader = SubResource("VisualShader_lu02m")
+shader_parameter/TreatType = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hf40"]
+atlas = ExtResource("4_6lo4r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od7d8"]
+atlas = ExtResource("4_6lo4r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1cd1"]
+atlas = ExtResource("4_6lo4r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ask73"]
+atlas = ExtResource("4_6lo4r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ygpi"]
+atlas = ExtResource("4_6lo4r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xnpqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hf40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od7d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1cd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ask73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ygpi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnv05"]
+radius = 15.033297
+
+[node name="QuestCollectible" type="Area2D" groups=["QuestCollectible"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("1_6cq1b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_hdiy0")
+sprite_frames = SubResource("SpriteFrames_xnpqi")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xnv05")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

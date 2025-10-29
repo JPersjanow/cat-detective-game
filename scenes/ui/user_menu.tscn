@@ -1,0 +1,163 @@
+[gd_scene load_steps=14 format=3 uid="uid://gr0rebp8w63c"]
+
+[ext_resource type="Script" uid="uid://c7wvpixwjvdbj" path="res://scenes/ui/user_menu.gd" id="1_55r5w"]
+[ext_resource type="Texture2D" uid="uid://c7krs1lrjyx7s" path="res://assets/ui/inventory.png" id="1_l41mq"]
+[ext_resource type="Texture2D" uid="uid://6h8hfaq1mn73" path="res://assets/player/cat-calico-sit.png" id="2_pgmt2"]
+[ext_resource type="FontFile" uid="uid://80stfyeusfp6" path="res://assets/ui/BoldPixels.ttf" id="4_lwlly"]
+[ext_resource type="Texture2D" uid="uid://daxnwx64yvoiw" path="res://assets/entities/food-bowl.png" id="6_ym4ut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwlly"]
+atlas = ExtResource("2_pgmt2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg64j"]
+atlas = ExtResource("2_pgmt2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ym4ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwlly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg64j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l181"]
+atlas = ExtResource("6_ym4ut")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsblg"]
+atlas = ExtResource("6_ym4ut")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7gny"]
+atlas = ExtResource("6_ym4ut")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2bu6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l181")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsblg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7gny")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sg64j"]
+font = ExtResource("4_lwlly")
+font_size = 96
+font_color = Color(0.15294118, 0.12156863, 0.105882354, 1)
+
+[node name="UserMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55r5w")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -645.8668
+offset_top = -391.0
+offset_right = 645.8668
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l41mq")
+expand_mode = 1
+
+[node name="SkillsContainer" type="GridContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.19000001
+anchor_right = 0.952
+anchor_bottom = 0.44300002
+offset_left = -0.043346405
+offset_top = 0.96517944
+offset_right = 0.04333496
+offset_bottom = 0.9541626
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect"]
+z_index = 6
+position = Vector2(1112.8668, 17)
+scale = Vector2(9.65625, 9.65625)
+sprite_frames = SubResource("SpriteFrames_ym4ut")
+autoplay = "default"
+frame = 1
+frame_progress = 0.90790236
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(166.86682, 636)
+scale = Vector2(11.390626, 11.389259)
+sprite_frames = SubResource("SpriteFrames_y2bu6")
+autoplay = "default"
+frame_progress = 0.5964398
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10300001
+anchor_top = 0.081
+anchor_right = 0.10300001
+anchor_bottom = 0.081
+offset_left = -0.18174744
+offset_top = -0.34199905
+offset_right = 263.81824
+offset_bottom = 95.658005
+text = "Skills"
+label_settings = SubResource("LabelSettings_sg64j")
+
+[node name="Label2" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.439
+anchor_right = 0.104
+anchor_bottom = 0.439
+offset_left = -0.47348022
+offset_top = -0.29800415
+offset_right = 263.52652
+offset_bottom = 95.701996
+text = "Items"
+label_settings = SubResource("LabelSettings_sg64j")
+
+[node name="ItemsContainer" type="GridContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20500001
+anchor_top = 0.569
+anchor_right = 0.20500001
+anchor_bottom = 0.569
+offset_left = 0.061401367
+offset_top = 0.041992188
+offset_right = 916.0614
+offset_bottom = 201.04199
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3

@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhafyee7gdewb"]
+
+[ext_resource type="Script" uid="uid://026vehyhlxb5" path="res://item.gd" id="1_nmkv6"]
+[ext_resource type="Texture2D" uid="uid://c7krs1lrjyx7s" path="res://assets/ui/inventory.png" id="2_7r112"]
+[ext_resource type="FontFile" uid="uid://80stfyeusfp6" path="res://assets/ui/BoldPixels.ttf" id="3_cm0xc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6h18m"]
+font = ExtResource("3_cm0xc")
+font_size = 41
+font_color = Color(0.15294118, 0.12156863, 0.105882354, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qbdqg"]
+line_spacing = -3.895
+font = ExtResource("3_cm0xc")
+font_size = 28
+font_color = Color(0.29803923, 0.23921569, 0.18039216, 1)
+
+[node name="Item" type="TextureRect"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nmkv6")
+
+[node name="Info" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -40.0
+offset_right = 320.125
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7r112")
+
+[node name="Name" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.38300002
+anchor_right = 0.5
+anchor_bottom = 0.38300002
+offset_left = -174.5625
+offset_top = -29.14
+offset_right = 174.4375
+offset_bottom = 12.860001
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ability Name"
+label_settings = SubResource("LabelSettings_6h18m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.38300002
+anchor_right = 0.5
+anchor_bottom = 0.38300002
+offset_left = -161.5625
+offset_top = 14.360001
+offset_right = 162.4375
+offset_bottom = 98.229
+grow_horizontal = 2
+grow_vertical = 2
+text = "This will contain ability description"
+label_settings = SubResource("LabelSettings_qbdqg")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

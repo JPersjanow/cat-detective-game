@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://uxp1b05crbfl"]
+
+[ext_resource type="PackedScene" uid="uid://djv8qrp3aho6a" path="res://scenes/entities/treat/treat.tscn" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://c3f3ycsgcjljt" path="res://scenes/player/player.tscn" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bmmfrh307agjj" path="res://icon.svg" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://4e2y6ngekdts" path="res://scenes/entities/npc/npc.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://nrfwul851hwn" path="res://scenes/objects/blockers/block_object.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dcla5mnercna8" path="res://scenes/entities/questcollectible/questcollectible.tscn" id="5_p57ef"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("1_yqjtg")]
+
+[node name="Icon" type="Sprite2D" parent="Entities"]
+position = Vector2(-78, 83)
+texture = ExtResource("2_lnu2h")
+
+[node name="NPC" parent="Entities" instance=ExtResource("4_iywne")]
+position = Vector2(131, -11)
+npc_name = "Gucio"
+
+[node name="Treats" type="Node2D" parent="Entities"]
+
+[node name="ClimbTreat" parent="Entities/Treats" instance=ExtResource("1_lnu2h")]
+position = Vector2(-166, -51)
+ability = 2
+
+[node name="ScratchTreat" parent="Entities/Treats" instance=ExtResource("1_lnu2h")]
+position = Vector2(-186, -51)
+
+[node name="SwimTreat" parent="Entities/Treats" instance=ExtResource("1_lnu2h")]
+position = Vector2(-144, -51)
+ability = 4
+
+[node name="MeowTreat" parent="Entities/Treats" instance=ExtResource("1_lnu2h")]
+position = Vector2(-207, -51)
+ability = 1
+
+[node name="LiquidTreat" parent="Entities/Treats" instance=ExtResource("1_lnu2h")]
+position = Vector2(-227, -51)
+ability = 3
+
+[node name="PurrTreat" parent="Entities/Treats" instance=ExtResource("1_lnu2h")]
+position = Vector2(-247, -51)
+ability = 5
+
+[node name="QuestCollectible" parent="Entities" node_paths=PackedStringArray("for_npc") instance=ExtResource("5_p57ef")]
+position = Vector2(73, 68)
+collectible_name = "Toy"
+for_npc = NodePath("../NPC")
+
+[node name="BlockObject" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-27, -47)
+ability_needed = 2
