@@ -32,7 +32,10 @@ func _process(_delta):
 			current_index = 0
 		else:
 			show_next_line()
-
+	
+	if current_state == State.FINISHED:
+		self.queue_free()
+	
 func show_textbox():
 	# Displays the textbox UI and sets the symbol markers.
 	textbox_container.visible = true

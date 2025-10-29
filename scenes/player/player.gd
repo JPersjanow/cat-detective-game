@@ -69,7 +69,7 @@ func move() -> void:
 		state = State.WALK
 	elif state == State.WALK:
 		state = State.IDLE
-		
+
 func animate() -> void:
 
 	if direction == Vector2.RIGHT:

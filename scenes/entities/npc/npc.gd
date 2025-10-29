@@ -19,9 +19,8 @@ func start_chat() -> void:
 		
 func end_chat() -> void:
 	finished_talking = true
-	if textbox_scene:
-		dialogue_lines = []
-		textbox_scene.queue_free()
+	dialogue_lines = []
+	textbox_scene.change_state(textbox_scene.State.FINISHED)
 	remove_quest_item_from_player_inventory()
 	
 			
