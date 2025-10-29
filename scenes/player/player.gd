@@ -1,12 +1,11 @@
 class_name Player extends CharacterBody2D
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var user_menu: UserMenu = $CanvasLayer/UserMenu
 const ITEM = preload("uid://dhafyee7gdewb")
 
 
 @export var speed = 150.0
-enum State {IDLE, WALK, SIT, TALKING, IN_USER_MENU}
+enum State {IDLE, WALK, SIT, TALKING}
 
 var direction: Vector2 = Vector2.ZERO
 var state: State
@@ -15,7 +14,7 @@ var inventory: Array
 var booping: Tween
 var resting: Tween
 var original_speed: float
-var in_user_menu: bool = false
+var npc_in_range: NPC
 
 func _ready() -> void:
 	state = State.IDLE
@@ -31,7 +30,6 @@ func _ready() -> void:
 	booping.tween_property(sprite_2d, "rotation", deg_to_rad(14.0), 0.3)
 	booping.tween_property(sprite_2d, "rotation", deg_to_rad(-14.0), 0.3)	
 	
-
 func _physics_process(delta: float) -> void:
 	handle_input()
 	move()
@@ -40,16 +38,6 @@ func _physics_process(delta: float) -> void:
 
 func handle_input() -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
-	if direction:
-		state = State.WALK
-	elif state != State.SIT:
-		state = State.IDLE
-	
-	if Input.is_action_just_pressed("sit"):
-		if state == State.SIT:
-			state = State.IDLE
-		else:
-			state = State.SIT
 	
 	if Input.is_action_just_pressed("info"):
 		for ability: Global.Abilities in abilities:
@@ -59,10 +47,13 @@ func handle_input() -> void:
 		print(self.position)
 		
 	if Input.is_action_just_pressed("interact"):
-			var target: NPC = ray_cast_2d.get_collider()
-			if target != null:
-				if target.is_in_group("NPCs"):
-					target.start_chat()
+		if npc_in_range:
+			if state != State.TALKING:
+					npc_in_range.start_chat()
+					state = State.TALKING
+			if npc_in_range.finished_talking:
+				state = State.SIT
+		
 	
 	if Input.is_action_just_pressed("open_usermenu"):
 		user_menu.visible = !user_menu.visible
@@ -74,9 +65,10 @@ func handle_input() -> void:
 	
 func move() -> void:
 	velocity = direction * speed
-	
-	if direction != Vector2.ZERO:
-			ray_cast_2d.target_position = direction.normalized() * 50
+	if velocity:
+		state = State.WALK
+	elif state == State.WALK:
+		state = State.IDLE
 		
 func animate() -> void:
 
@@ -91,7 +83,7 @@ func animate() -> void:
 		if resting:
 			resting.kill()
 			
-	elif state == State.SIT:
+	elif state == State.SIT or state == State.TALKING:
 		sprite_2d.animation = "sit"
 	else:
 		sprite_2d.animation = "idle"
@@ -127,5 +119,6 @@ func switch_movement(mode: bool):
 		speed = original_speed
 		hide_mouse()
 	else:
+		state = State.SIT
 		speed = 0
 		show_mouse()

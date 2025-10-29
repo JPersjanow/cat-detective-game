@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://gr0rebp8w63c"]
+[gd_scene load_steps=9 format=3 uid="uid://gr0rebp8w63c"]
 
 [ext_resource type="Script" uid="uid://c7wvpixwjvdbj" path="res://scenes/ui/user_menu.gd" id="1_55r5w"]
 [ext_resource type="Texture2D" uid="uid://c7krs1lrjyx7s" path="res://assets/ui/inventory.png" id="1_l41mq"]
 [ext_resource type="Texture2D" uid="uid://6h8hfaq1mn73" path="res://assets/player/cat-calico-sit.png" id="2_pgmt2"]
 [ext_resource type="FontFile" uid="uid://80stfyeusfp6" path="res://assets/ui/BoldPixels.ttf" id="4_lwlly"]
-[ext_resource type="Texture2D" uid="uid://daxnwx64yvoiw" path="res://assets/entities/food-bowl.png" id="6_ym4ut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwlly"]
 atlas = ExtResource("2_pgmt2")
@@ -26,35 +25,6 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 1.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6l181"]
-atlas = ExtResource("6_ym4ut")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fsblg"]
-atlas = ExtResource("6_ym4ut")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e7gny"]
-atlas = ExtResource("6_ym4ut")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y2bu6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6l181")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fsblg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e7gny")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sg64j"]
@@ -112,13 +82,6 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.90790236
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TextureRect"]
-position = Vector2(166.86682, 636)
-scale = Vector2(11.390626, 11.389259)
-sprite_frames = SubResource("SpriteFrames_y2bu6")
-autoplay = "default"
-frame_progress = 0.5964398
-
 [node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -150,14 +113,14 @@ label_settings = SubResource("LabelSettings_sg64j")
 [node name="ItemsContainer" type="GridContainer" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.20500001
+anchor_left = 0.048
 anchor_top = 0.569
-anchor_right = 0.20500001
-anchor_bottom = 0.569
-offset_left = 0.061401367
+anchor_right = 0.95400006
+anchor_bottom = 0.82600003
+offset_left = -0.1363945
 offset_top = 0.041992188
-offset_right = 916.0614
-offset_bottom = 201.04199
+offset_right = 0.55285645
+offset_bottom = 0.067993164
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3

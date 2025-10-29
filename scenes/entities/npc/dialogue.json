@@ -1,12 +1,18 @@
 {
-	"Gucio": {
-		"1": [
-			"miau miau miau",
-			"miau, miau ..."
-			],
-		"2": [
-	  		"You're back. Did you find the relic?",
-	  		"There is still hope for us."
-			]
+"Gucio": {
+	"1": [
+		"miau miau miau",
+		"miau, miau ..."
+		],
+	"2": [
+	  	"You're back. Did you find the relic?",
+	  	"There is still hope for us."
+		]
   },
+"Babel": {
+	"1": [
+		"hello miau"
+	]
+}
+
 }

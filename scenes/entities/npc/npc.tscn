@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://4e2y6ngekdts"]
+[gd_scene load_steps=9 format=3 uid="uid://4e2y6ngekdts"]
 
 [ext_resource type="Script" uid="uid://dutkduwgm2bij" path="res://scenes/entities/npc/npc.gd" id="1_4kvco"]
 [ext_resource type="Texture2D" uid="uid://b43ic30a8xxxf" path="res://assets/npc/cat-ragdoll-idle.png" id="1_iify0"]
+[ext_resource type="Script" uid="uid://vll1hup4bm25" path="res://scenes/entities/npc/conversation_area.gd" id="3_xjnpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kvco"]
 atlas = ExtResource("1_iify0")
@@ -28,7 +29,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kvb8"]
 size = Vector2(20, 10)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5uw1"]
+radius = 49.162994
+
 [node name="NPC" type="CharacterBody2D" groups=["NPCs"]]
+collision_layer = 8
 script = ExtResource("1_4kvco")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -39,3 +44,13 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_3kvb8")
+
+[node name="ConversationArea" type="Area2D" parent="."]
+script = ExtResource("3_xjnpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConversationArea"]
+shape = SubResource("CircleShape2D_p5uw1")
+debug_color = Color(0.9517471, 0.16236696, 0.38730797, 0.41960785)
+
+[connection signal="body_entered" from="ConversationArea" to="." method="_on_conversation_area_body_entered"]
+[connection signal="body_exited" from="ConversationArea" to="." method="_on_conversation_area_body_exited"]

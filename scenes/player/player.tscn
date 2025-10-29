@@ -87,7 +87,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -102,9 +102,6 @@ sprite_frames = SubResource("SpriteFrames_3v2ag")
 animation = &"idle"
 autoplay = "idle"
 frame = 1
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 31)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

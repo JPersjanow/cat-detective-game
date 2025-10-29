@@ -46,10 +46,16 @@ ability = 3
 position = Vector2(-247, -51)
 ability = 5
 
-[node name="QuestCollectible" parent="Entities" node_paths=PackedStringArray("for_npc") instance=ExtResource("5_p57ef")]
+[node name="Items" type="Node2D" parent="Entities"]
+
+[node name="QuestCollectible" parent="Entities/Items" node_paths=PackedStringArray("for_npc") instance=ExtResource("5_p57ef")]
 position = Vector2(73, 68)
 collectible_name = "Toy"
-for_npc = NodePath("../NPC")
+for_npc = NodePath("../../NPC")
+
+[node name="NPC2" parent="Entities" instance=ExtResource("4_iywne")]
+position = Vector2(72, 139)
+npc_name = "Babel"
 
 [node name="BlockObject" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-27, -47)

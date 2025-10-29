@@ -23,8 +23,7 @@ func reload_abilities() -> void:
 			ability_scene.ability = ability
 			skills_container.add_child(ability_scene)
 			displayed_abilities.append(ability)
-	for item in player.inventory:
-		print(item)
+	for item: UIItem in player.inventory:
 		items_container.add_child(item)
 		displayed_items.append(item)
 		

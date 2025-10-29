@@ -26,6 +26,7 @@ func get_dialogue(npc_name: String, stage: int) -> Array:
 		var npc_dialogue = dialogue_data[npc_name]
 		if str(stage) in npc_dialogue:
 			print("Loaded dialogue for", npc_name, "stage", stage)
-			return npc_dialogue[str(stage)]
+			var lines = npc_dialogue[str(stage)]
+			return lines
 	print("No dialogue found for", npc_name, "stage", stage)
 	return []

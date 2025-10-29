@@ -1,14 +1,11 @@
-class_name BlockObject extends StaticBody2D
+class_name ConversationArea extends Area2D
 
-@export var ability_needed: Global.Abilities
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _on_area_2d_body_entered(player: Player) -> void:
-	if ability_needed in player.abilities:
-		queue_free()

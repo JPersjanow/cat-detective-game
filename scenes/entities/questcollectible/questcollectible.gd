@@ -12,7 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_body_entered(player: Player) -> void:
 	player.collect(self)
 	
