@@ -3,6 +3,7 @@ const TEXTBOX = preload("uid://my3vfo17yd8y")
 
 @export var npc_name: String
 @export var story_stage: int = 1
+@export var is_quest_npc: bool = true
 var dialogue_lines: Array = []
 var textbox_scene: Textbox
 var player_in_range: Player
@@ -20,8 +21,10 @@ func start_chat() -> void:
 func end_chat() -> void:
 	finished_talking = true
 	dialogue_lines = []
-	textbox_scene.change_state(textbox_scene.State.FINISHED)
-	remove_quest_item_from_player_inventory()
+	if textbox_scene:
+		textbox_scene.change_state(textbox_scene.State.FINISHED)
+	if is_quest_npc:
+		remove_quest_item_from_player_inventory()
 	
 			
 func remove_quest_item_from_player_inventory() -> void:

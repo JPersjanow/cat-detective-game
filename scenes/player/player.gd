@@ -54,7 +54,6 @@ func handle_input() -> void:
 			if npc_in_range.finished_talking:
 				state = State.SIT
 		
-	
 	if Input.is_action_just_pressed("open_usermenu"):
 		user_menu.visible = !user_menu.visible
 		

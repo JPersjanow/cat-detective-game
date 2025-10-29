@@ -56,6 +56,7 @@ for_npc = NodePath("../../NPC")
 [node name="NPC2" parent="Entities" instance=ExtResource("4_iywne")]
 position = Vector2(72, 139)
 npc_name = "Babel"
+is_quest_npc = false
 
 [node name="BlockObject" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-27, -47)
