@@ -7,6 +7,8 @@ const ICON_4 = preload("uid://dmckpqc5u5u6v")
 const ICON_5 = preload("uid://jujydq2ri0at")
 const ICON_6 = preload("uid://b2sj2opvw0bnf")
 
+const CAT_HELLO = "Miau!"
+
 enum Abilities {SCRATCH, MEOW, CLIMB, LIQUID, SWIM, PURR}
 var AbilitiesNames: Dictionary = {
 	Abilities.SCRATCH: "Scratch",
